@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanskriti 3D - Explore Heritage in 3D</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Model Viewer Library for 3D Models -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">🏛️ Sanskriti <span>3D</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="heritage.html">Explore Heritage</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Preserving & Exploring Cultural Heritage in 3D</h1>
+      <p>Discover India's iconic heritage through interactive 3D visualizations, rich historical narratives, and immersive learning experiences.</p>
+      <a href="heritage.html" class="btn btn-secondary">Explore Heritage Now ➔</a>
+    </div>
+  </section>
+
+  <!-- Featured Section -->
+  <section class="featured">
+    <h2 style="color: var(--secondary-color, #1e293b);">Featured Heritage Sites</h2>
+    <div id="featured-grid" class="heritage-grid"></div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof renderHeritageCards === "function" && typeof heritageData !== "undefined") {
+        // Renders first 3 featured items on homepage
+        renderHeritageCards(heritageData.slice(0, 3), "featured-grid");
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Collection - Sanskriti 3D</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">🏛️ Sanskriti <span>3D</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="heritage.html" class="active">Explore Heritage</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1 style="margin-bottom: 1.5rem; color: var(--secondary-color);">Heritage Directory</h1>
+
+    <section class="filter-section">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search by name, location, or history...">
+      </div>
+      <div class="category-buttons">
+        <button class="cat-btn active" data-cat="All">All</button>
+        <button class="cat-btn" data-cat="Caves">Caves</button>
+        <button class="cat-btn" data-cat="Temples">Temples</button>
+        <button class="cat-btn" data-cat="Forts">Forts</button>
+        <button class="cat-btn" data-cat="Monuments">Monuments</button>
+      </div>
+    </section>
+
+    <div class="heritage-grid" id="catalog-grid"></div>
+  </main>
+
+  <footer>
+    <p>© 2026 Sanskriti 3D | Smart India Hackathon Prototype</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let activeCategory = "All";
+      
+      function filterData() {
+        const query = document.getElementById("search-input").value.toLowerCase();
+        const filtered = heritageData.filter(item => {
+          const matchesCat = activeCategory === "All" || item.category === activeCategory;
+          const matchesSearch = item.name.toLowerCase().includes(query) ||
+                                item.location.toLowerCase().includes(query) ||
+                                item.shortDesc.toLowerCase().includes(query);
+          return matchesCat && matchesSearch;
+        });
+        renderHeritageCards(filtered, "catalog-grid");
+      }
+
+      // Initial Render
+      renderHeritageCards(heritageData, "catalog-grid");
+
+      // Category Switch Event Handler
+      document.querySelectorAll(".cat-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+          e.target.classList.add("active");
+          activeCategory = e.target.getAttribute("data-cat");
+          filterData();
+        });
+      });
+
+      // Search Handler
+      document.getElementById("search-input").addEventListener("input", filterData);
+    });
+  </script>
+</body>
+</html>

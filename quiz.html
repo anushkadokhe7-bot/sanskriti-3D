@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heritage Quiz - Sanskriti 3D</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">🏛️ Sanskriti <span>3D</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="heritage.html">Explore Heritage</a></li>
+        <li><a href="quiz.html" class="active">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container" style="padding: 2rem 1rem; max-width: 800px; margin: 0 auto;">
+    <div style="background: #ffffff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); text-align: center;">
+      <h1 style="font-size: 2.2rem; color: #1e293b; margin-bottom: 0.5rem;">Interactive Heritage Quiz</h1>
+      <p style="color: #64748b; margin-bottom: 2rem;">Test your knowledge on India's architectural monuments!</p>
+
+      <form id="quiz-form">
+        <!-- Questions will be dynamically loaded here by quiz.js -->
+        <div id="quiz-container" style="text-align: left;"></div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem; padding: 0.75rem 2rem; font-size: 1rem; cursor: pointer;">
+          Submit Answers
+        </button>
+      </form>
+
+      <!-- Score Display Container -->
+      <div id="quiz-result" style="margin-top: 1.5rem; display: none; padding: 1rem; border-radius: 8px; font-weight: bold; font-size: 1.2rem;"></div>
+    </div>
+  </main>
+
+  <footer style="text-align: center; padding: 1.5rem; margin-top: 2rem; color: #64748b;">
+    <p>© 2026 Sanskriti 3D | Smart India Hackathon Prototype</p>
+  </footer>
+
+  <script src="js/quiz.js"></script>
+</body>
+</html>
